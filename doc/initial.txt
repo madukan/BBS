@@ -1,0 +1,16 @@
+Bulletin Board System
+
+Author:	Damien Hunter
+Email:	damien.hunter9@gmail.com
+Date:	03/08/2016 (dd/mm/yyyy) 1st Draft
+
+Bulletin Board System
+
+I am writing this to explain this project. BBS or Bulletin Board System Software should be self explanitory. I am developing this Software
+in Java on Linux Fedora 24. Why? For shits and giggles. If I sit at home, without brushing up on my skills, then I accomplish nothing. So
+this is an exercise on creating a BBS, then releasing it into the wild for testing and feedback.
+
+Releasing it into the wild for testing? Bat shit nuts I know, but this will be a short term venture, but only on a VM of my choosing. If 
+you're interested in keeping up to date with my progress, then let me know.
+
+Damien
