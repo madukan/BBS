@@ -1,19 +1,18 @@
 import java.io.*;
-import java.nio.*;
 import java.net.*;
 
 public class ClientHandler{
-    	protected Socket client;
-    	protected PrintWriter out;
+	protected Socket client;
+    protected PrintWriter out;
 
-    	public ClientHandler(Socket client){
-        	this.client = client;
+    public ClientHandler(Socket client){
+    	this.client = client;
         
 		try{
-            		this.out = new PrintWriter(client.getOutputStream());
-        	}
+			this.out = new PrintWriter(client.getOutputStream());
+        }
 		catch(IOException e){
-            		e.printStackTrace();
-        	}
-    	}
+			e.printStackTrace();
+        }
+    }
 }
