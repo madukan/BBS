@@ -7,6 +7,6 @@
 
 public class servStart{
 	public static void main(String [] args){
-		new Server(1025); // Set to 1025, Bind error below 1024.
+		new Server(1038); // Set to 1025, Bind error below 1024.
 	}
 }

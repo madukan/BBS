@@ -9,6 +9,7 @@ public class Server extends Thread{
     	try{
     		this.server = new ServerSocket(port);
     		System.out.println("BBS Server has been Initialized!");
+    		
     		clients = Collections.synchronizedList(new ArrayList<ClientHandler>());
     		this.start();
     	}
@@ -22,6 +23,7 @@ public class Server extends Thread{
 			try{
 				Socket client = server.accept();
 				System.out.println(client.getInetAddress().getHostName() + " Connected");
+				
 				ClientHandler newClient = new ClientHandler(client);
 				clients.add(newClient);
 				new SendMessage(clients);
