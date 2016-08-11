@@ -7,7 +7,7 @@ public class Server{
 		System.out.println("BBS Server Initialised!");
 
 		Socket sock = sersock.accept();
-		BufferedReader keyRead = new BufferedReader(new InputStreamReader(System.in);
+		BufferedReader keyRead = new BufferedReader(new InputStreamReader(System.in));
 		OutputStream ostream = sock.getOutputStream();
 		PrintWriter pwrite = new PrintWriter(ostream, true);
 
