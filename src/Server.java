@@ -1,55 +1,29 @@
-import java.io.*;
 import java.net.*;
- 
+import java.io.*;
+
 public class Server{
-	private static Socket socket;
+	public static void main(String[] args) throws Exception{
+		ServerSocket sersock = new ServerSocket(1025);
+		System.out.println("BBS Server Initialised!");
+
+		Socket sock = sersock.accept();
+		BufferedReader keyRead = new BufferedReader(new InputStreamReader(System.in);
+		OutputStream ostream = sock.getOutputStream();
+		PrintWriter pwrite = new PrintWriter(ostream, true);
+
+		// Receiving
+		InputStream istream = sock.getInputStream();
+		BufferedReader receiveRead = new BufferedReader(new InputStreamReader(istream));
  
-    	public static void main(String[] args){
-        	try{
-            		ServerSocket serverSocket = new ServerSocket(1025);
-            		System.out.println("Server Started and Listening on Port 1025");
- 
-            		// Server is running always. This is done using this while(true) loop
-            		while(true){
-                		// Reading the message from the client
-                		socket = serverSocket.accept();
-                		InputStream is = socket.getInputStream();
-                		InputStreamReader isr = new InputStreamReader(is);
-                		BufferedReader br = new BufferedReader(isr);
-                		String number = br.readLine();
-                
-				System.out.println("Message received from client is " + number);
- 
-                		// Multiplying the number by 2 and forming the return message
-                		String returnMessage;
-                
-				try{
-                    			int numberInIntFormat = Integer.parseInt(number);
-                    			int returnValue = numberInIntFormat * 2;
-                    			returnMessage = String.valueOf(returnValue) + "\n";
-                		}
-                		catch(NumberFormatException e){
-                    			// Input was not a number. Sending proper message back to client.
-                    			returnMessage = "Please Send a Number\n";
-                		}
- 
-                		// Sending the response back to the client.
-                		OutputStream os = socket.getOutputStream();
-                		OutputStreamWriter osw = new OutputStreamWriter(os);
-               	 		BufferedWriter bw = new BufferedWriter(osw);
-                		bw.write(returnMessage);
-                		System.out.println("Message sent to the client is " + returnMessage);
-                		bw.flush();
-            		}
-        	}
-        	catch (Exception e){
-            		e.printStackTrace();
-        	}
-        	finally{
-            		try{
-                		socket.close();
-            		}
-            		catch(Exception e){}
-        	}
-    	}
+		String receiveMessage, sendMessage;
+
+		while(true){
+			if((receiveMessage = receiveRead.readLine()) != null){
+				System.out.println(receiveMessage);
+			}
+			sendMessage = keyRead.readLine();
+			pwrite.println(sendMessage);
+			pwrite.flush();
+		}
+	}
 }
