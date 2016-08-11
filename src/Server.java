@@ -1,6 +1,13 @@
 import java.net.*;
 import java.io.*;
 
+/**
+ *
+ * Two way communications enabled in Server.java. May need threading.
+ *
+ * Damien Hunter (11/08/2016)
+ *
+ **/
 public class Server{
 	public static void main(String[] args) throws Exception{
 		ServerSocket sersock = new ServerSocket(1025);
