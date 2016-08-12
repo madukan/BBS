@@ -8,6 +8,7 @@ This Bulletin Board System is being developed in Java on a Linux Fedora 24 box. 
 . Games: LORD, Oregan Trail, Usurper, Zork, Trade Wars etc.
 . Chat: SysOp to User and User to User chat. IRC integration etc.
 . Files: File Storage and Sharing.
+. Torrents: Allow for torrent hosting and storage.
 
 Development has not been intensive yet (11/8/2016), but plans are to complete a working system before years end.
 
