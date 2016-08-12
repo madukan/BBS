@@ -28,6 +28,8 @@ public class Server extends Thread{
                 	System.out.println("BBS Server Initialised!");
 
                 	sock = sersock.accept();
+
+			System.out.println(sock.toString() + " is Connected!");
                 	BufferedReader keyRead = new BufferedReader(new InputStreamReader(System.in));
                 	OutputStream ostream = sock.getOutputStream();
                 	PrintWriter pwrite = new PrintWriter(ostream, true);
