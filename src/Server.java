@@ -3,15 +3,17 @@ import java.io.*;
 
 /**
  *
- * Two way communications enabled in Server.java. May need threading.
+ * Two way communications enabled in Server.java. May need threading. Also needs Client
+ * Handling for logging purposes.
  *
- * Damien Hunter (11/08/2016)
+ * Damien Hunter (11/08/2016) damien.hunter9@gmail.com
  *
  **/
 public class Server extends Thread{
 	private ServerSocket sersock;
 	private Socket sock;
 	private int port = 0;
+	private String receiveMessage, sendMessage;
 
 	public Server(){}
 
@@ -30,12 +32,9 @@ public class Server extends Thread{
                 	OutputStream ostream = sock.getOutputStream();
                 	PrintWriter pwrite = new PrintWriter(ostream, true);
 
-                	// Receiving
                 	InputStream istream = sock.getInputStream();
                 	BufferedReader receiveRead = new BufferedReader(new InputStreamReader(istream));
  
-                	String receiveMessage, sendMessage;
-
                 	while(true){
                         	if((receiveMessage = receiveRead.readLine()) != null){
                                 	System.out.println(receiveMessage);
@@ -49,6 +48,8 @@ public class Server extends Thread{
 	}
 
 	public static void main(String[] args) throws Exception{
+		// Initialising a new Server. Will make use of arguments
+		// instead of hard coding the port number.
 		Server a = new Server(1025);
 	}
 }
