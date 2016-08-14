@@ -1,7 +1,12 @@
 import java.io.*;
 import java.net.*;
 
-public class GossipServer{
+public class Server extends Thread{
+	public Server(){}
+
+	public void run(){
+	}
+
 	public static void main(String[] args) throws Exception{
 		ServerSocket sersock = new ServerSocket(3000);
 		System.out.println("BBS Server Initialised");
