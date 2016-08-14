@@ -2,33 +2,40 @@ import java.io.*;
 import java.net.*;
 
 public class Server extends Thread{
+	private int port;
+
 	public Server(){}
 
-	public void run(){
+	public Server(int port){
+		this.port = port;
+		run();
 	}
 
-	public static void main(String[] args) throws Exception{
-		ServerSocket sersock = new ServerSocket(3000);
-		System.out.println("BBS Server Initialised");
-		Socket sock = sersock.accept();
+	public void run(){
+		try{
+			ServerSocket sersock = new ServerSocket(port);
+			System.out.println("BBS Server Initialised");
+			Socket sock = sersock.accept();
 
-		BufferedReader keyRead = new BufferedReader(new InputStreamReader(System.in));
+			BufferedReader keyRead = new BufferedReader(new InputStreamReader(System.in));
 
-		OutputStream ostream = sock.getOutputStream();
-		PrintWriter pwrite = new PrintWriter(ostream, true);
+			OutputStream ostream = sock.getOutputStream();
+			PrintWriter pwrite = new PrintWriter(ostream, true);
 
-		InputStream istream = sock.getInputStream();
-		BufferedReader receiveRead = new BufferedReader(new InputStreamReader(istream));
+			InputStream istream = sock.getInputStream();
+			BufferedReader receiveRead = new BufferedReader(new InputStreamReader(istream));
 
-		String receiveMessage, sendMessage;
+			String receiveMessage, sendMessage;
 
-		while(true){
-			if((receiveMessage = receiveRead.readLine()) != null){
-				System.out.println(receiveMessage);
+			while(true){
+				if((receiveMessage = receiveRead.readLine()) != null){
+					System.out.println(receiveMessage);
+				}
+				sendMessage = keyRead.readLine();
+				pwrite.println(sendMessage);
+				pwrite.flush();
 			}
-			sendMessage = keyRead.readLine();
-			pwrite.println(sendMessage);
-			pwrite.flush();
 		}
+		catch(Exception e){}
 	}
 }      
