@@ -25,10 +25,15 @@ public class Server extends Thread{
 			InputStream istream = sock.getInputStream();
 			BufferedReader receiveRead = new BufferedReader(new InputStreamReader(istream));
 
-			String receiveMessage, sendMessage;
+			String receiveMessage, sendMessage, user;
 
 			while(true){
 				if((receiveMessage = receiveRead.readLine()) != null){
+					if(receiveMessage.equals("login")){
+                                		pwrite.println("User Name: ");
+						user = receiveRead.readLine();
+						System.out.println(user);
+					}
 					System.out.println(receiveMessage);
 				}
 				sendMessage = keyRead.readLine();
