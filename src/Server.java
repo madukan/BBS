@@ -3,6 +3,7 @@ import java.net.*;
 
 public class Server extends Thread{
 	private int port;
+	private String receiveMessage, sendMessage, user;
 
 	public Server(){}
 
@@ -24,8 +25,6 @@ public class Server extends Thread{
 
 			InputStream istream = sock.getInputStream();
 			BufferedReader receiveRead = new BufferedReader(new InputStreamReader(istream));
-
-			String receiveMessage, sendMessage, user;
 
 			while(true){
 				if((receiveMessage = receiveRead.readLine()) != null){
