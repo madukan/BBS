@@ -3,7 +3,7 @@ import java.net.*;
 
 public class Server extends Thread{
 	private int port;
-	private String receiveMessage, sendMessage, user;
+	private String receiveMessage, sendMessage, user, pass;
 
 	public Server(){}
 
@@ -29,9 +29,15 @@ public class Server extends Thread{
 			while(true){
 				if((receiveMessage = receiveRead.readLine()) != null){
 					if(receiveMessage.equals("login")){
-                                		pwrite.println("User Name: ");
+						pwrite.println("User Name: ");
 						user = receiveRead.readLine();
 						System.out.println(user);
+
+						pwrite.println("Pass: ");
+						pass = receiveRead.readLine();
+						System.out.println(pass);
+
+						userLogin(user, pass);
 					}
 					System.out.println(receiveMessage);
 				}
@@ -42,4 +48,9 @@ public class Server extends Thread{
 		}
 		catch(Exception e){}
 	}
-}      
+
+	public void userLogin(user, pass){
+		this.user = user;
+		this.pass = pass;
+	}
+}
