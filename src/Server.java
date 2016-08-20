@@ -8,13 +8,13 @@ public class Server extends Thread{
 
 	public Server(int port){
 		this.port = port;
+		System.out.println("BBS Server Initialised");
 		run();
 	}
 
 	public void run(){
 		try{
 			ServerSocket sersock = new ServerSocket(port);
-			System.out.println("BBS Server Initialised");
 			Socket sock = sersock.accept();
 
 			BufferedReader keyRead = new BufferedReader(new InputStreamReader(System.in));
