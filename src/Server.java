@@ -49,7 +49,7 @@ public class Server extends Thread{
 		catch(Exception e){}
 	}
 
-	public void userLogin(user, pass){
+	public void userLogin(String user, String pass){
 		this.user = user;
 		this.pass = pass;
 	}
