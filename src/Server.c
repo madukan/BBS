@@ -43,18 +43,19 @@ int main(int argc, char *argv[]){
 	if(newsockfd < 0)
 		error("Error on Accept");
 
-	bzero(buffer, 256);
-	n = read(newsockfd, buffer, 255);
+	while(true){
+		bzero(buffer, 256);
+		n = read(newsockfd, buffer, 255);
 
-	if(n < 0)
-		error("Error Reading From Socket");
+		if(n < 0)
+			error("Error Reading From Socket");
 
-	printf("Here is the message: %s\n", buffer);
-	n = write(newsockfd, "I got your message", 18);
+		printf("Here is the message: %s\n", buffer);
+		n = write(newsockfd, "I got your message", 18);
 
-	if(n < 0)
-		error("Error Writing to Socket");
-
+		if(n < 0)
+			error("Error Writing to Socket");
+	}
 	close(newsockfd);
 	close(sockfd);
 	return 0;
