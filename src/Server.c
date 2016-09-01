@@ -6,6 +6,8 @@
 #include <sys/socket.h>
 #include <netinet/in.h>
 
+typedef enum { false, true } bool;
+
 void error(const char *msg){
 	perror(msg);
 	exit(1);
